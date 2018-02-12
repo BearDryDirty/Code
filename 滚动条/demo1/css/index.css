@@ -1,0 +1,81 @@
+@charset "utf-8";
+body {
+    background-color: #FFFFFF;
+    margin-left: 0px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+a, input:focus, textarea:focus {
+    outline: none;
+}
+
+p {
+	font-size: 12px;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	color: #000;
+	white-space: pre-line;
+	margin-right: 4px;
+	margin-left: 4px;
+	margin-top: 0px;
+	float: left;
+	height: auto;
+	width: auto;
+}	
+
+
+
+.div_scroll {
+	width: 300px;
+	height: 200px;
+	overflow: auto;
+	float: left;
+}	
+
+.scroll_container {
+	overflow: hidden;
+	position: relative;
+	background-color: #F8F8F8;
+}
+
+.scroll_absolute {
+    position: absolute;
+}
+
+.scroll_vertical_bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: green;
+    margin: 0;
+    padding: 0;
+}
+
+.scroll_track {
+	position: relative;
+	background-color: #BFEBFF;
+}
+
+.scroll_drag {
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	background-color: #075E92;
+}
+
+.scroll_arrow {
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+	background-color: #369DB4;
+}
+
+.scroll_vertical_bar .scroll_arrow {
+    height: 16px;
+}

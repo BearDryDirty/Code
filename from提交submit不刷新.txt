@@ -1,0 +1,9 @@
+		<div class="wrap">
+			<form method="post" target="test">
+				<div class="check-box">
+					ÆøÆ¿ÌõÂë:<input type="text" class="check-input" />
+				</div>
+				<input type="submit" value="²éÑ¯" class="check-btn" />
+			</form>
+			<iframe class="none" name="test"></iframe>
+		</div>

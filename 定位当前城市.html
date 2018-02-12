@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>定位当前城市</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+//通过调用新浪IP地址库接口查询用户当前所在国家、省份、城市、运营商信息
+$.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js',function(){
+
+   $(".city").val(remote_ip_info.city);
+
+   });
+
+});
+</script>
+</head>
+<body>
+
+<div><span class="city"></span></div>
+<input type="text" class="city">
+
+</body>
+</html>

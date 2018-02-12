@@ -1,0 +1,12 @@
+<script>
+function copyCody () {
+	var copycode = $(".copy-code");
+    copycode.select(); //选择对象 
+    document.execCommand("Copy"); //执行浏览器复制命令
+}
+function copyLink () {
+	var copylink = $(".copy-link");
+    copylink.select(); //选择对象 
+    document.execCommand("Copy"); //执行浏览器复制命令
+}
+</script>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>分段滑块</title>
+</head>
+<style>
+.wrap{width: 1000px; height: 40px; margin: 30px auto;}
+.slider-box{width: 1000px; height: 20px; background: #eee; position: relative;}
+#range2{position:relative;width:1000px;height:20px;background:#eee;cursor: pointer;}
+#mea{position:absolute;top:0;left:0;width: 1px;height: 20px; background: #fd5a3c;}
+.slider-arrow{position:absolute; top:-10px; left:-10px;width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;
+border-top: 10px solid #fd5a3c;}
+.slider-bg{width: auto; height: 20px; background: #fd5a3c; position: absolute; left: 0; top: 0;}
+#value2{color: #000; position: absolute; top: -30px; left: -30px; width: 60px; text-align: center;}
+#rangeVal{width: 160px; height: 30px; border: 1px solid #999; border-radius: 6px; margin-bottom: 50px; text-align: center;}
+</style>
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<body>
+	
+	
+	
+	
+	
+<div class="wrap">
+	<input type="text" id="rangeVal" value="50"/>
+	<div class="slider-box">
+	<div id='range2' onclick="change1(this,event)">
+			<div class="slider-bg transition"></div>
+	     <div id='mea' class="transition" onmousedown="change2(this,event)" >
+	     	<span class="slider-arrow"></span><span id="value2">50</span>
+	     </div>
+	</div>
+</div>
+
+
+	
+
+
+
+<script type='text/javascript'>
+function change2(o,e){
+	var e = e ? e : window.event;
+	if(!window.event) {e.preventDefault();}
+	var tX=o.offsetLeft,
+		dx=e.clientX;
+	document.onmousemove=function(e){
+		var e = e ? e : window.event;
+		var len=tX+e.clientX-dx;
+		if(len>=0 && len<=500){
+			o.style.left=len+"px";
+			var xVal = Math.round((950/500)*len)+50;
+			var yVal = xVal;
+			if(xVal == 10000){
+				yVal ='1亿'
+			};
+			$('#value2').text(yVal);
+			$('#rangeVal').val(xVal);
+			$('.slider-bg').css('width',len)
+		} else if(len>=501 && len<=1000){
+			o.style.left=len+"px";
+			var xVal = Math.round((9000/500)*(len-500))+1000;
+			var yVal = xVal;
+			if(xVal == 10000){
+				yVal ='1亿'
+			};
+			$('#value2').text(yVal);
+			$('#rangeVal').val(xVal);
+			$('.slider-bg').css('width',len)
+		}
+	}
+	document.onmouseup=function(){
+		document.onmousemove=null;
+		document.onmouseup=null;
+	}
+};
+function change1(o,e){
+	var e = e ? e : window.event;
+	if(!window.event) {e.preventDefault();}
+	var tX=o.offsetLeft;
+	var	dx=e.clientX;
+	var	oL=$('.slider-box').offset().left;
+	document.onclick=function(e){
+		var e = e ? e : window.event;
+		var len=dx-oL;
+		if(len>=0 && len<=500){
+			var xVal = Math.round((950/500)*len)+50;
+			var yVal = xVal;
+			if(xVal == 10000){
+				yVal ='1亿'
+			};
+			$('#value2').text(yVal);
+			$('#rangeVal').val(xVal);
+			$('.slider-bg').css('width',len);
+			$('#mea').css('left',len)
+		} else if(len>=501 && len<=1000){
+			var xVal = Math.round((9000/500)*(len-500))+1000;
+			var yVal = xVal;
+			if(xVal == 10000){
+				yVal ='1亿'
+			};
+			$('#value2').text(yVal);
+			$('#rangeVal').val(xVal);
+			$('.slider-bg').css('width',len);
+			$('#mea').css('left',len)
+		}
+	}
+};
+$(function(){
+	$('#rangeVal').keyup(function(){
+		var rangeVal = $(this).val();
+		if(rangeVal>=50 && rangeVal<=1000){
+			var leftVal = Math.round((rangeVal-50)/(950/500));
+			$('#value2').html(rangeVal);
+			$('#mea').css('left',leftVal);
+			$('.slider-bg').css('width',leftVal)
+		} else if(rangeVal>=1001 && rangeVal<=10000){
+			var leftVal = Math.round((rangeVal-1000)/Math.round(9000/500)+500);
+			$('#value2').html(rangeVal);
+			$('#mea').css('left',leftVal);
+			$('.slider-bg').css('width',leftVal)
+		}
+	})
+})
+
+</script>
+</body>
+</html>
